@@ -1,10 +1,11 @@
 import { GithubProfile } from "../../api/github";
 
 //actions
-export const GET_USER_PROFILE = "github/GET_USER_PROFILE" as const;
+export const GET_USER_PROFILE = "githubSaga/GET_USER_PROFILE" as const;
 export const GET_USER_PROFILE_SUCCESS =
-  "github/GET_USER_PROFILE_SUCCESS" as const;
-export const GET_USER_PROFILE_ERROR = "github/GET_USER_PROFILE_ERROR" as const;
+  "githubSaga/GET_USER_PROFILE_SUCCESS" as const;
+export const GET_USER_PROFILE_ERROR =
+  "githubSaga/GET_USER_PROFILE_ERROR" as const;
 
 //action creators
 export const getProfile = (payload: string) => ({

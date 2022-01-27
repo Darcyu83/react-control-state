@@ -2,22 +2,23 @@ import { useDispatch, useSelector } from "react-redux";
 import GithubProfileInfo from "../components/GithubProfileInfo";
 import GithubUsernameForm from "../components/GithubUsernameForm";
 import { TRootReducer } from "../modules";
-import { getUserProfileThunk } from "../modules/githubThunk";
+import { getProfile } from "../modules/githubSaga/actions";
 
-function GithubProfileLoader() {
+function SagaGithubProfileLoader() {
   const { isLoading, error, data } = useSelector(
-    (state: TRootReducer) => state.github.userProfile
+    (state: TRootReducer) => state.githubSaga.userProfileSaga
   );
 
   const dispatch = useDispatch();
 
   const onSubmitUsername = (username: string) => {
-    dispatch(getUserProfileThunk(username));
+    // send saga action creator as parameter to dispatch
+    dispatch(getProfile(username));
   };
 
   return (
     <>
-      <h1>GithubProfileLoader</h1>
+      <h1>SagaGithubProfileLoader</h1>
       <GithubUsernameForm onSubmitUsername={onSubmitUsername} />
       {isLoading && <p>Loading...</p>}
       {error && <p>Error!!</p>}
@@ -32,4 +33,4 @@ function GithubProfileLoader() {
     </>
   );
 }
-export default GithubProfileLoader;
+export default SagaGithubProfileLoader;

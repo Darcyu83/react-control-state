@@ -6,8 +6,8 @@ export type TGithubAction =
   | ReturnType<typeof getProfileSuccess>
   | ReturnType<typeof getProfileError>;
 
-export type TGithubState = {
-  userProfile: {
+export type TGithubStateSaga = {
+  userProfileSaga: {
     isLoading: boolean;
     error: any | null;
     data: GithubProfile | null;

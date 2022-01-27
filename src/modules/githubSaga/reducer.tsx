@@ -3,27 +3,27 @@ import {
   GET_USER_PROFILE_ERROR,
   GET_USER_PROFILE_SUCCESS,
 } from "./actions";
-import { TGithubAction, TGithubState } from "./types";
+import { TGithubAction, TGithubStateSaga } from "./types";
 
-const initialState: TGithubState = {
-  userProfile: { isLoading: false, error: null, data: null },
+const initialState: TGithubStateSaga = {
+  userProfileSaga: { isLoading: false, error: null, data: null },
 };
 
 function reducer(
-  state: TGithubState = initialState,
+  state: TGithubStateSaga = initialState,
   action: TGithubAction
-): TGithubState {
+): TGithubStateSaga {
   switch (action.type) {
     case GET_USER_PROFILE:
       return {
         ...state,
-        userProfile: { ...state.userProfile, isLoading: true },
+        userProfileSaga: { ...state.userProfileSaga, isLoading: true },
       };
     case GET_USER_PROFILE_SUCCESS:
       return {
         ...state,
-        userProfile: {
-          ...state.userProfile,
+        userProfileSaga: {
+          ...state.userProfileSaga,
           isLoading: false,
           data: action.payload,
         },
@@ -31,8 +31,8 @@ function reducer(
     case GET_USER_PROFILE_ERROR:
       return {
         ...state,
-        userProfile: {
-          ...state.userProfile,
+        userProfileSaga: {
+          ...state.userProfileSaga,
           isLoading: false,
           error: action.payload,
         },

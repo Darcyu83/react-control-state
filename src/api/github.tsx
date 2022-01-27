@@ -1,4 +1,4 @@
-export async function getUserProfile(username?: string) {
+export async function getUserProfileAPI(username: string) {
   const reponse: GithubProfile = await fetch(
     `https://api.github.com/users/${username}`
   ).then((res) => res.json());

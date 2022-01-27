@@ -4,16 +4,24 @@ import Counter from "./components/Counter";
 import Myform from "./components/Myform";
 import ReducerSample from "./components/ReducerSample";
 import GithubProfileLoader from "./containers/GithubProfileLoader";
+import MoviesContainer from "./containers/MoviesContainer";
 import ReduxCounterContainer from "./containers/ReduxCounterContainer";
 import ReduxTodosContainer from "./containers/ReduxTodosContainer";
+import SagaGithubProfileLoader from "./containers/SagaGithubProfileLoader";
 import "./Css.module.css";
+
+import "./lib/test";
+
 function App() {
   const onSubmit = (form: { name: string; description: string }) => {
     console.log(form);
   };
   return (
-    <>
+    <div style={{ minWidth: "max-content" }}>
       <GithubProfileLoader />
+      <SagaGithubProfileLoader />
+      <hr />
+      <MoviesContainer />
       <h1>Typescript</h1>
       in index.tsx
       <div> ┌ Redux </div>
@@ -23,7 +31,8 @@ function App() {
         style={{
           backgroundColor: "rgba(0,0,0,0.4)",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns:
+            "minmax(max-content, 1fr) minmax(max-content, 1fr)",
           gap: "10px",
         }}
       >
@@ -34,7 +43,7 @@ function App() {
         <ReduxCounterContainer />
         <ReduxTodosContainer />
       </div>
-    </>
+    </div>
   );
 }
 

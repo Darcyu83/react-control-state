@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { getProfile, getProfileSuccess, getProfileError } from "./actions";
-import { getUserProfile } from "../../api/github";
+import { getUserProfileAPI } from "../../api/github";
 import { TGithubAction } from "./types";
 import { TRootReducer } from "../index";
 
@@ -10,7 +10,7 @@ export function getUserProfileThunk(
   return async (dispatch) => {
     dispatch(getProfile());
     try {
-      const userProfile = await getUserProfile(username);
+      const userProfile = await getUserProfileAPI(username);
       dispatch(getProfileSuccess(userProfile));
     } catch (error: any) {
       dispatch(getProfileError(error));
